@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Programa de Apoio a Mães e Bebês</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Formulario de Apoio</h1>
+
+    <form id="formulario">
+      <section class="form-step active" data-step="1">
+        <h1>INSCRIÇÃO — PROGRAMA DE APOIO A MÃES E BEBÊS</h1>
+        <p class="descricao">
+        Por favor, preencha com atenção. As informações serão usadas para identificar necessidades e oferecer apoio adequado a mães em situação de vulnerabilidade social.
+        </p>
+
+        <div class="botoes">
+          <button type="button" class="next">Próximo</button>
+        </div>
+      </section>
+
+      <!-- Etapa 1 -->
+      <section class="form-step" data-step="2">
+        <h2>1. Dados Pessoais</h2>
+
+        <label>Nome completo</label>
+        <input type="text" name="nome" required>
+
+        <label>Data de nascimento</label>
+        <input type="date" name="nascimento" required>
+
+        <label>Idade</label>
+        <input type="number" name="idade" required>
+
+        <label>CPF</label>
+        <input type="text" name="cpf" required>
+
+        <label>RG</label>
+        <input type="text" name="rg">
+
+        <label>Estado civil</label>
+        <select name="estado_civil" required>
+          <option value="">Selecione</option>
+          <option>Solteira</option>
+          <option>Casada</option>
+          <option>União estável</option>
+          <option>Separada</option>
+          <option>Viúva</option>
+        </select>
+
+        <label>Endereço completo</label>
+        <input type="text" name="endereco" required>
+
+        <label>Telefone</label>
+        <input type="tel" name="telefone" required>
+
+        <label>E-mail (opcional)</label>
+        <input type="email" name="email">
+
+        <div class="botoes">
+          <button type="button" class="next">Próximo</button>
+        </div>
+      </section>
+
+      <!-- Etapa 2 -->
+      <section class="form-step" data-step="3">
+        <h2>2. Situação Familiar</h2>
+
+        <label>Você mora com quem?</label>
+        <select name="mora_com" required>
+          <option>Sozinha</option>
+          <option>Com o companheiro(a)</option>
+          <option>Com familiares</option>
+          <option>Em abrigo</option>
+          <option>Outra situação</option>
+        </select>
+
+        <label>Quantas pessoas moram na sua casa?</label>
+        <input type="number" name="qtd_pessoas" required>
+
+        <label>Quantas crianças vivem com você?</label>
+        <input type="number" name="qtd_criancas">
+
+        <label>Idades das crianças</label>
+        <input type="text" name="idades_criancas">
+
+        <div class="botoes">
+          <button type="button" class="prev">Voltar</button>
+          <button type="button" class="next">Próximo</button>
+        </div>
+      </section>
+
+      <!-- Etapa 3 -->
+      <section class="form-step" data-step="4">
+        <h2>3. Gestação ou Bebê</h2>
+
+        <label>Você está</label>
+        <select name="situacao_gestacao" required>
+          <option>Grávida</option>
+          <option>Já teve o bebê</option>
+        </select>
+
+        <label>Meses de gestação</label>
+        <input type="number" name="meses_gestacao">
+
+        <label>Faz acompanhamento pré-natal?</label>
+        <select name="prenatal">
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+
+        <label>Onde faz o acompanhamento?</label>
+        <input type="text" name="local_prenatal">
+
+        <label>Idade do bebê (em meses)</label>
+        <input type="number" name="idade_bebe">
+
+        <label>O bebê possui registro de nascimento?</label>
+        <select name="registro_bebe">
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+
+        <label>O bebê está vacinado conforme o calendário?</label>
+        <select name="vacinado">
+          <option>Sim</option>
+          <option>Não</option>
+        </select>
+
+        <div class="botoes">
+          <button type="button" class="prev">Voltar</button>
+          <button type="button" class="next">Próximo</button>
+        </div>
+      </section>
+
+        <!-- Etapa 4 -->
+        <section class="form-step" data-step="5">
+        <h2>4. Situação Socioeconômica</h2>
+
+        <label>Você está trabalhando atualmente?</label>
+        <select name="trabalho_atual" required>
+            <option>Sim, com carteira assinada</option>
+            <option>Sim, trabalho informal</option>
+            <option>Não estou trabalhando</option>
+        </select>
+
+        <label>Qual é a sua principal fonte de renda?</label>
+        <select name="fonte_renda" id="fonte_renda" required>
+            <option>Trabalho próprio</option>
+            <option>Benefício social</option>
+            <option>Ajuda de familiares</option>
+            <option>Não tenho renda</option>
+        </select>
+
+        <div id="bolsa_familia_tutorial" class="tutorial" style="display:none;">
+            <h3>Consulta Bolsa Família</h3>
+            <p>Para comprovar o benefício do Bolsa Família, siga as instruções:</p>
+            <ol>
+            <li>Acesse o site do <a href="https://cadunico.dataprev.gov.br/" target="_blank">Cadastro Único</a>.</li>
+            <li>Faça login com seu CPF e senha cadastrada na conta <strong>gov.br</strong>.</li>
+            <li>Na página inicial, clique em “Consulta Bolsa Família”.</li>
+            <li>Você também pode usar o aplicativo <strong>Cadastro Único</strong> (Android e iOS).</li>
+            <li>Caso não tenha senha gov.br, é possível cadastrar-se diretamente no site ou app.</li>
+            <li>Também é possível consultar pelo nome completo, data de nascimento e nome da mãe.</li>
+            </ol>
+        </div>
+
+        <label>Renda mensal total da família</label>
+        <select name="renda_mensal" required>
+            <option>Até 1 salário mínimo</option>
+            <option>De 1 a 2 salários mínimos</option>
+            <option>Mais de 2 salários mínimos</option>
+        </select>
+
+        <div class="botoes">
+            <button type="button" class="prev">Voltar</button>
+            <button type="button" class="next">Próximo</button>
+        </div>
+        </section>
+
+        <!-- Etapa 5 -->
+        <section class="form-step" data-step="6">
+        <h2>5. Condições de Moradia</h2>
+
+        <label>Tipo de moradia</label>
+        <select name="tipo_moradia" required>
+            <option>Própria</option>
+            <option>Alugada</option>
+            <option>Cedida</option>
+            <option>Ocupação / abrigo</option>
+        </select>
+
+        <label>Material predominante da casa</label>
+        <select name="material_casa">
+            <option>Alvenaria</option>
+            <option>Madeira</option>
+            <option>Outro</option>
+        </select>
+
+        <label>A casa possui:</label>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="infraestrutura" value="Água encanada"> Água encanada</label>
+            <label><input type="checkbox" name="infraestrutura" value="Energia elétrica"> Energia elétrica</label>
+            <label><input type="checkbox" name="infraestrutura" value="Esgoto"> Esgoto</label>
+            <label><input type="checkbox" name="infraestrutura" value="Coleta de lixo"> Coleta de lixo</label>
+        </div>
+
+        <div class="botoes">
+            <button type="button" class="prev">Voltar</button>
+            <button type="button" class="next">Próximo</button>
+        </div>
+        </section>
+
+        <!-- Etapa 6 -->
+        <section class="form-step" data-step="7">
+        <h2>6. Saúde e Apoio</h2>
+
+        <label>Você tem acesso a posto de saúde próximo?</label>
+        <select name="posto_saude" required>
+            <option>Sim</option>
+            <option>Não</option>
+        </select>
+
+        <label>Recebe acompanhamento de assistente social ou psicólogo?</label>
+        <select name="acompanhamento_social">
+            <option>Sim</option>
+            <option>Não</option>
+        </select>
+
+        <label>Usa algum medicamento de uso contínuo?</label>
+        <select name="medicamento_continuo" id="medicamento_continuo">
+            <option>Não</option>
+            <option>Sim</option>
+        </select>
+
+        <input type="text" name="qual_medicamento" id="qual_medicamento" placeholder="Se sim, qual?" style="display:none;">
+
+        <label>Já participou de algum programa social voltado para gestantes ou mães?</label>
+        <select name="programa_social" id="programa_social">
+            <option>Não</option>
+            <option>Sim</option>
+        </select>
+
+        <input type="text" name="qual_programa" id="qual_programa" placeholder="Se sim, qual?" style="display:none;">
+
+        <div class="botoes">
+            <button type="button" class="prev">Voltar</button>
+            <button type="button" class="next">Próximo</button>
+        </div>
+        </section>
+
+        <!-- Etapa 7 -->
+        <section class="form-step" data-step="8">
+        <h2>7. Apoio e Expectativas</h2>
+
+        <label>Que tipo de ajuda você mais precisa no momento?</label>
+        <select name="tipo_ajuda" required>
+            <option>Alimentos</option>
+            <option>Enxoval</option>
+            <option>Apoio psicológico</option>
+            <option>Amamentação</option>
+            <option>Cursos</option>
+            <option>Acompanhamento social</option>
+        </select>
+
+        <label>Você tem alguém que te apoia durante a gestação ou nos cuidados com o bebê?</label>
+        <select name="apoio_pessoal">
+            <option>Sim</option>
+            <option>Não</option>
+        </select>
+
+        <label>Deixe uma mensagem ou observação que gostaria de compartilhar</label>
+        <textarea name="mensagem" rows="4" placeholder="Digite aqui..."></textarea>
+
+        <div class="botoes">
+            <button type="button" class="prev">Voltar</button>
+            <button type="button" class="next">Próximo</button>
+        </div>
+        </section>
+
+        <!-- Etapa 8 -->
+        <section class="form-step" data-step="9">
+        <h2>8. Autorização</h2>
+
+        <p>Declaro que as informações prestadas são verdadeiras e autorizo o uso para fins de avaliação e inclusão no Programa de Apoio a Mães e Bebês.</p>
+
+        <label>Assinatura (nome completo)</label>
+        <input type="text" name="assinatura" required>
+
+        <label>Data</label>
+        <input type="date" name="data_assinatura" required>
+
+        <div class="botoes">
+            <button type="button" class="prev">Voltar</button>
+            <button type="submit">Finalizar Inscrição</button>
+        </div>
+        </section>
+
+      <!-- Resumo final -->
+      <section class="form-step" data-step="final">
+        <h2>Resumo do Cadastro</h2>
+        <pre id="resumo"></pre>
+
+        <div class="botoes">
+          <button type="button" class="prev">Voltar</button>
+          <button type="submit">Enviar</button>
+        </div>
+      </section>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

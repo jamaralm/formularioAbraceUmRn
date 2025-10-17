@@ -1,72 +1,76 @@
-const form = document.getElementById("formulario");
-const steps = document.querySelectorAll(".form-step");
-let currentStep = 0;
-let formData = {};
+document.addEventListener('DOMContentLoaded', () => {
+    // --- NAVEGAÇÃO EM ETAPAS ---
+    const steps = Array.from(document.querySelectorAll('.form-step'));
+    const progressSteps = Array.from(document.querySelectorAll('.progress-step'));
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const submitBtn = document.getElementById('submitBtn');
+    const form = document.getElementById('ongForm');
+    
+    let currentStep = 0;
 
-function showStep(index) {
-  steps.forEach((step, i) => {
-    step.classList.toggle("active", i === index);
-  });
-}
+    const updateFormSteps = () => {
+        steps.forEach((step, index) => {
+            step.classList.toggle('active', index === currentStep);
+        });
+        
+        progressSteps.forEach((step, index) => {
+            step.classList.toggle('active', index <= currentStep);
+        });
 
-document.querySelectorAll(".next").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const inputs = steps[currentStep].querySelectorAll("input, select, textarea");
-    inputs.forEach(input => {
-      formData[input.name] = input.value;
+        prevBtn.style.display = currentStep === 0 ? 'none' : 'block';
+        nextBtn.style.display = currentStep === steps.length - 1 ? 'none' : 'block';
+        submitBtn.style.display = currentStep === steps.length - 1 ? 'block' : 'none';
+    };
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentStep < steps.length - 1) {
+            currentStep++;
+            updateFormSteps();
+        }
     });
-    currentStep++;
-    if (currentStep < steps.length) showStep(currentStep);
-    if (steps[currentStep].dataset.step === "final") {
-      gerarResumo();
-    }
-  });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentStep > 0) {
+            currentStep--;
+            updateFormSteps();
+        }
+    });
+    
+    updateFormSteps(); // Inicializa o formulário
+
+    // --- LÓGICA CONDICIONAL ---
+    const addConditionalListener = (radioName, conditionalDivId, showOnValue = 'sim') => {
+        document.querySelectorAll(`input[name="${radioName}"]`).forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const div = document.getElementById(conditionalDivId);
+                div.classList.toggle('hidden', e.target.value !== showOnValue);
+            });
+        });
+    };
+    
+    // 3. Gestação ou Bebê
+    addConditionalListener('statusGestacao', 'divGravida', 'gravida');
+    addConditionalListener('statusGestacao', 'divBebe', 'bebe');
+    addConditionalListener('preNatal', 'divLocalPreNatal');
+    
+    // 6. Saúde e Apoio
+    addConditionalListener('medicamento', 'divQualMedicamento');
+    addConditionalListener('programaSocial', 'divQualPrograma');
+    
+    // --- LÓGICA DE ENVIO ---
+    const fonteRendaSelect = document.getElementById('fonteRenda');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); 
+        
+        if (fonteRendaSelect.value === 'beneficio') {
+            alert("Obrigado por preencher! Agora vamos te mostrar como comprovar o seu benefício.");
+            window.location.href = 'comprovante.html';
+        } else {
+            alert("Formulário enviado com sucesso! Entraremos em contato em breve. ❤️");
+            form.reset();
+            currentStep = 0;
+            updateFormSteps(); // Volta para a primeira etapa
+        }
+    });
 });
-
-document.querySelectorAll(".prev").forEach(btn => {
-  btn.addEventListener("click", () => {
-    if (currentStep > 0) {
-      currentStep--;
-      showStep(currentStep);
-    }
-  });
-});
-
-function gerarResumo() {
-  let texto = "🩷 *Resumo do Cadastro:*\n\n";
-  for (let campo in formData) {
-    texto += `• ${campo.replace("_", " ")}: ${formData[campo]}\n`;
-  }
-  document.getElementById("resumo").textContent = texto;
-}
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  alert("Formulário enviado com sucesso!");
-  console.log("Dados finais:", formData);
-});
-
-document.getElementById("fonte_renda").addEventListener("change", (e) => {
-  const tutorial = document.getElementById("bolsa_familia_tutorial");
-  if (e.target.value === "Benefício social") {
-    tutorial.style.display = "block";
-  } else {
-    tutorial.style.display = "none";
-  }
-});
-
-const medSelect = document.getElementById("medicamento_continuo");
-const qualMed = document.getElementById("qual_medicamento");
-if (medSelect) {
-  medSelect.addEventListener("change", () => {
-    qualMed.style.display = medSelect.value === "Sim" ? "block" : "none";
-  });
-}
-
-const progSelect = document.getElementById("programa_social");
-const qualProg = document.getElementById("qual_programa");
-if (progSelect) {
-  progSelect.addEventListener("change", () => {
-    qualProg.style.display = progSelect.value === "Sim" ? "block" : "none";
-  });
-}

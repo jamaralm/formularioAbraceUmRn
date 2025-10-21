@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprovação de Benefício - Mães Acolhidas</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Estilos adicionais específicos para esta página */
+        .instrucoes {
+            text-align: left;
+        }
+
+        /* Usando a variável --texto-titulo para os subtítulos */
+        .instrucoes h2 {
+            color: var(--texto-titulo); 
+            margin-bottom: 15px;
+        }
+        
+        .instrucoes ul {
+            list-style-type: disc; /* Garante que os marcadores apareçam */
+            list-style-position: inside;
+            margin-bottom: 20px;
+            padding-left: 10px; /* Pequeno recuo para os itens */
+        }
+        
+         .instrucoes li {
+            margin-bottom: 10px;
+        }
+
+        .instrucoes p {
+            margin-bottom: 15px; /* Espaçamento entre os parágrafos */
+        }
+        
+        .instrucoes strong {
+             color: var(--texto-titulo); /* Destaque em rosa escuro */
+             font-weight: 600;
+        }
+
+        /* Botão "Voltar" estilizado para combinar com os botões do formulário */
+        .link-voltar {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px; /* Mesmo padding dos botões de navegação */
+            
+            /* Usando as variáveis da nova paleta de cores */
+            background-color: var(--rosa-principal);
+            color: var(--rosa-fundo); /* Cor do texto clara para contrastar */
+            
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .link-voltar:hover {
+            background-color: var(--rosa-hover); /* Efeito hover consistente */
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <header>
+            <h1>Consulta do Bolsa Família</h1>
+            <p>Siga os passos abaixo para consultar seu benefício no Cadastro Único.</p>
+        </header>
+
+        <section class="instrucoes">
+            <h2>Como consultar pelo site ou aplicativo:</h2>
+            <p>O processo é bem simples:</p>
+            <ul>
+                <li>Acesse o <strong>site do Cadastro Único</strong> ou baixe o aplicativo na sua loja.</li>
+                <li>Faça login com seu <strong>CPF</strong> e senha da conta <strong>gov.br</strong>.</li>
+                <li>Na página inicial, clique na opção <strong>“Consulta Bolsa Família”</strong>.</li>
+            </ul>
+            <p><strong>Importante:</strong> Caso você ainda não tenha uma senha gov.br, é possível cadastrar-se diretamente no site ou no aplicativo.</p>
+            <p>Se não tiver o CPF ou NIS em mãos, você também pode fazer uma consulta simples, informando seu nome completo, data de nascimento e nome da mãe.</p>
+
+            <a href="index.html" class="link-voltar">Voltar para o Início</a>
+        </section>
+    </main>
+</body>
+</html>

@@ -57,12 +57,68 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Saúde e Apoio
     addConditionalListener('medicamento', 'divQualMedicamento');
     addConditionalListener('programaSocial', 'divQualPrograma');
+
+    // Lista de Itens 
+
+    const novoItemInput = document.getElementById('novoItem');
+    const listaItens = document.getElementById('listaItens');
+
+    if (novoItemInput && listaItens) {
+        novoItemInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const texto = novoItemInput.value.trim();
+                if (texto !== "") {
+                    const li = document.createElement('li');
+                    li.innerHTML = `${texto} <button type="button" class="remover-item">✖</button>`;
+                    listaItens.appendChild(li);
+                    novoItemInput.value = '';
+                }
+            }
+        });
+
+        listaItens.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remover-item')) {
+                e.target.parentElement.remove();
+            }
+        });
+    }
     
     // --- LÓGICA DE ENVIO ---
     const fonteRendaSelect = document.getElementById('fonteRenda');
     form.addEventListener('submit', (event) => {
+        if (!form.checkValidity()) {
+            event.preventDefault(); 
+            alert("Por favor, preencha todos os campos antes de continuar!");
+            return; 
+        }
+
         event.preventDefault(); 
-        
+
+        const agora = new Date();
+        const dataEnvioFormatada = agora.toISOString().slice(0, 19).replace('T', ' ');
+        document.getElementById('dataEnvio').value = dataEnvioFormatada;
+
+        // --- Exemplo de envio da data para o backend (opcional) ---
+        // Aqui você pode enviar junto com os outros dados:
+        const formData = new FormData(form);
+        const dados = Object.fromEntries(formData.entries()); // transforma tudo em objeto
+
+        // remover depois
+        console.log("Dados enviados:", dados);
+
+        // Caso você use fetch pra mandar pro backend da Oracle:
+        /*
+        fetch('https://seu-endpoint.oraclecloud.com/receber-dados', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dados)
+        })
+        .then(response => response.json())
+        .then(data => console.log('Enviado com sucesso:', data))
+        .catch(error => console.error('Erro:', error));
+        */
+
         if (fonteRendaSelect.value === 'beneficio') {
             alert("Obrigado por preencher! Agora vamos te mostrar como comprovar o seu benefício.");
             window.location.href = 'comprovante.html';
@@ -73,4 +129,11 @@ document.addEventListener('DOMContentLoaded', () => {
             updateFormSteps(); // Volta para a primeira etapa
         }
     });
+
+    $(document).ready(function(){
+    $('#cpf').mask('000.000.000-00');
+    $('#telefone').mask('(00) 00000-0000');
+    $('#rg').mask('0000000000'); 
+    });
 });
+

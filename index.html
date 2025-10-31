@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 </head>
 <body>
 
@@ -70,7 +72,7 @@
                     <input type="tel" id="telefone" name="telefone" placeholder="(00) 90000-0000" required>
                 </div>
                 <div class="input-group">
-                    <label for="email">E-mail (opcional)</label>
+                    <label for="email">E-mail</label>
                     <input type="email" id="email" name="email">
                 </div>
             </fieldset>
@@ -149,9 +151,27 @@
 
             <fieldset class="form-step">
                 <legend>7. Apoio e Expectativas</legend>
-                <div class="checkbox-group"><p>Que tipo de ajuda você mais precisa no momento?</p><label><input type="checkbox" name="ajuda" value="alimentos"> Alimentos</label><label><input type="checkbox" name="ajuda" value="enxoval"> Enxoval</label><label><input type="checkbox" name="ajuda" value="psicologico"> Apoio psicológico</label><label><input type="checkbox" name="ajuda" value="amamentacao"> Amamentação</label><label><input type="checkbox" name="ajuda" value="cursos"> Cursos</label><label><input type="checkbox" name="ajuda" value="social"> Acompanhamento social</label></div>
+                <div class="input-group">
+                <label for="novoItem">Itens necessários</label>
+                <div id="listaContainer">
+                    <input type="text" id="novoItem" list="itensSugestoes" placeholder="Digite ou escolha um item e pressione Enter">
+                    <datalist id="itensSugestoes">
+                    <option value="Fraldas">
+                    <option value="Roupinhas">
+                    <option value="Leite">
+                    <option value="Carrinho de bebê">
+                    <option value="Lenços umedecidos">
+                    <option value="Cobertores">
+                    <option value="Pomadas">
+                    <option value="Mamadeiras">
+                    </datalist>
+                    <ul id="listaItens"></ul>
+                </div>
+                <div class="radio-group"><p>Você tem berço para o bebê?</p><label><input type="radio" name="berco" value="sim"> Sim</label><label><input type="radio" name="berco" value="nao"> Não</label></div>
+                <div class="checkbox-group"><p>Que tipo de ajuda você mais precisa no momento?</p><label><input type="checkbox" name="ajuda" value="psicologico"> Apoio psicológico</label><label><input type="checkbox" name="ajuda" value="cursos"> Cursos</label><label><input type="checkbox" name="ajuda" value="social"> Acompanhamento social</label><input type="checkbox" name="ajuda" value="nenhuma">Nenhuma ajuda externa no momento</label></div>
                 <div class="radio-group"><p>Você tem alguém que te apoia?</p><label><input type="radio" name="apoioPessoal" value="sim"> Sim</label><label><input type="radio" name="apoioPessoal" value="nao"> Não</label></div>
-                <div class="input-group"><label for="mensagem">Deixe uma mensagem ou observação (opcional)</label><textarea id="mensagem" name="mensagem" rows="4"></textarea></div>
+                <div class="input-group"><label for="mensagem">Descreva o que aconteceu para você estar precisando da ajuda do projeto</label><textarea id="mensagem" name="mensagem" rows="4"></textarea></div>
+                <p>Antes enviar o formulário, verifique se todos os pontos foram respondidos.</p>
             </fieldset>
 
             <div class="form-navigation">
@@ -159,9 +179,11 @@
                 <button type="button" class="nav-btn" id="nextBtn">Próximo</button>
                 <button type="submit" class="submit-btn" id="submitBtn">Enviar Formulário</button>
             </div>
+            <input type="hidden" id="dataEnvio" name="dataEnvio">
         </form>
     </main>
 
     <script src="script.js"></script>
+    
 </body>
 </html>

@@ -1,3 +1,18 @@
+let ANSWERS = {};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('ongForm');
+
+    // Função para armazenar respostas no objeto ANSWERS
+    window.store_answers = function() {
+        const formData = new FormData(form);
+        formData.forEach((value, key) => {
+            ANSWERS[key] = value;
+        });
+        console.log(ANSWERS); // Para depuração
+    };
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- NAVEGAÇÃO EM ETAPAS ---
     const steps = Array.from(document.querySelectorAll('.form-step'));

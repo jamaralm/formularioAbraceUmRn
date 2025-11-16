@@ -89,3 +89,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+function sendFormDataToApi() {
+    try {
+        fetch('http://localhost/api/formSubmit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(ANSWERS)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    } catch (error) {
+        console.error('Unexpected Error:', error
+        )
+    }
+}

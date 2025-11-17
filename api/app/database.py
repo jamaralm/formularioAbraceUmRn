@@ -8,3 +8,4 @@ class MotherModel(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     statusGestacao = Column(String, unique=True, index=True)
+    urgencyLevel = Column(Integer, index=True)

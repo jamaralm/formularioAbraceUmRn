@@ -20,9 +20,10 @@ Base.metadata.create_all(bind=engine)
 class Mother(BaseModel):
     name: str
     statusGestacao: str
+    urgencyLevel: int = 0
 
 def create_mother(db: Session, mother: MotherModel):
-    db_mother = MotherModel(name=mother.name, statusGestacao=mother.statusGestacao)
+    db_mother = MotherModel(name=mother.name, statusGestacao=mother.statusGestacao, urgencyLevel=mother.urgencyLevel)
     db.add(db_mother)
     db.commit()
     db.refresh(db_mother)
@@ -36,7 +37,7 @@ def read_root():
         return {"Mother List": "No mothers found."}
 
     resposeList = [
-        {"name": mother.name, "statusGestacao": mother.statusGestacao} for mother in motherList
+        {"name": mother.name, "statusGestacao": mother.statusGestacao, "urgencyLevel": mother.urgencyLevel} for mother in motherList
     ]
     return {"Mother List": resposeList}
 

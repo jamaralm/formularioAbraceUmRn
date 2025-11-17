@@ -1,5 +1,26 @@
 let ANSWERS = {};
 
+function calculateUrgencyScore() {
+    const form = document.getElementById('ongForm');
+    let totalScore = 0;
+
+    const scoredElements = form.querySelectorAll('input[data-score]');
+
+    scoredElements.forEach(element => {
+        const scoreString = element.getAttribute('data-score');
+
+        if (scordeString !== null) {
+            const score = parseInt(scoreString);
+
+            if (!isNaN(score)) {
+                totalScore += score;
+            }
+        }
+    });
+
+    return totalScore;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('ongForm');
 
@@ -11,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         console.log(ANSWERS); // Para depuração
     };
+
+    ANSWERS['urgencyScore'] = calculateUrgencyScore();
 });
 
 document.addEventListener('DOMContentLoaded', () => {

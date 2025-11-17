@@ -9,7 +9,7 @@ function calculateUrgencyScore() {
     scoredElements.forEach(element => {
         const scoreString = element.getAttribute('data-score');
 
-        if (scordeString !== null) {
+        if (scoreString !== null) {
             const score = parseInt(scoreString);
 
             if (!isNaN(score)) {

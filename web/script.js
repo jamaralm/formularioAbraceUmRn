@@ -16,9 +16,8 @@ function calculateUrgencyScore() {
                 totalScore += score;
             }
         }
+        return totalScore;
     });
-
-    return totalScore;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

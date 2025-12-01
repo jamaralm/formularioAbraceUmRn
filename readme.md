@@ -46,6 +46,13 @@
 
 ## Overview
 
+### Recent front-end fixes
+
+- Improved form layout and responsiveness (grouped related fields into two-column rows).
+- Removed jQuery usage and added native JS input formatting (CPF / telefone / RG).
+- Fixed conditional-section validation (inputs inside hidden sections are now disabled so the form can submit correctly).
+- Removed non-code comments and cleaned up script and styles for clarity.
+
 
 
 ---

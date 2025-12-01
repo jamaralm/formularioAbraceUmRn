@@ -1,0 +1,4 @@
+fastapi
+uvicorn[standard]
+psycopg2-binary  # Driver do PostgreSQL
+sqlalchemy       # Para interagir com o Postgres

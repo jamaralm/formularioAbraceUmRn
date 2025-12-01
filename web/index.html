@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Apoio - Mães Acolhidas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1>Formulário de Acolhimento</h1>
+            <p>Olá, mamãe! Preencha os dados com calma, uma etapa de cada vez.</p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress-step active" data-step="1"></div>
+            <div class="progress-step" data-step="2"></div>
+            <div class="progress-step" data-step="3"></div>
+            <div class="progress-step" data-step="4"></div>
+            <div class="progress-step" data-step="5"></div>
+            <div class="progress-step" data-step="6"></div>
+            <div class="progress-step" data-step="7"></div>
+            <div class="progress-step" data-step="8"></div>
+
+        </div>
+
+        <form id="ongForm">
+            <fieldset class="form-step active">
+                <legend>1. Seus Dados Pessoais</legend>
+                <div class="input-group">
+                    <label for="nomeCompleto">Nome Completo</label>
+                    <input type="text" id="nomeCompleto" name="nomeCompleto" required>
+                </div>
+                <div class="input-group">
+                    <label for="dataNascimento">Data de Nascimento</label>
+                    <input type="date" id="dataNascimento" name="dataNascimento" required>
+                </div>
+                <div class="input-group">
+                    <label for="idade">Idade</label>
+                    <select id="idade" name="idade" required>
+                        <option value="">Selecione...</option>
+                        <option value="menor_18" data-score="5">Menor de 18 anos</option>
+                        <option value="18_24"    data-score="3">18 a 24 anos</option>
+                        <option value="25_34"    data-score="2">25 a 34 anos</option>
+                        <option value="35_44"    data-score="1">35 a 44 anos</option>
+                        <option value="45_54"    data-score="3">45 a 54 anos</option>
+                        <option value="55_64"    data-score="4">55 a 64 anos</option>
+                        <option value="65_mais"  data-score="5">65 anos ou mais</option>
+                    </select>    
+                </div>
+                <div class="input-group">
+                    <label for="cpf">Número do CPF</label>
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" required>
+                </div>
+                <div class="input-group">
+                    <label for="rg">Número do RG</label>
+                    <input type="text" id="rg" name="rg" required>
+                </div>
+                <div class="input-group">
+                    <label for="estadoCivil">Estado Civil</label>
+                    <select id="estadoCivil" name="estadoCivil" required>
+                        <option value="" >Selecione...</option>
+                        <option value="solteira"      data-score="3">Solteira</option>
+                        <option value="casada"        data-score="1">Casada</option>
+                        <option value="uniao_estavel" data-score="3">União Estável</option>
+                        <option value="separada"      data-score="5">Separada</option>
+                        <option value="viuva"         data-score="5">Viúva</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="telefone">Telefone para Contato</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 90000-0000" required>
+                </div>
+                <div class="input-group">
+                    <label for="email">E-mail (opcional)</label>
+                    <input type="email" id="email" name="email">
+                </div>
+            </fieldset>
+            
+            <fieldset class="form-step">
+                <legend>2. Endereço</legend>
+
+                <div class="input-group">
+                    <label for="cep">CEP</label>
+                    <input type="text" id="cep" name="cep" placeholder="00000-000" required 
+                        maxlength="9" inputmode="numeric" autocomplete="postal-code">
+                </div>
+
+                <div class="input-group">
+                    <label for="logradouro">Logradouro</label>
+                    <input type="text" id="logradouro" name="logradouro" required autocomplete="address-line1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="numero">Número</label>
+                    <input type="text" id="numero" name="numero" required autocomplete="address-line2">
+                </div>
+                
+                <div class="input-group">
+                    <label for="complemento">Complemento (Apto, Bloco, Casa)</label>
+                    <input type="text" id="complemento" name="complemento" autocomplete="address-line3">
+                </div>
+
+                <div class="input-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" name="bairro" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" required autocomplete="address-level2">
+                </div>
+
+                <div class="input-group">
+                    <label for="estado">Estado (UF)</label>
+                    <select id="estado" name="estado" placeholder="Selecione..." required autocomplete="address-level1">
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step">
+                <legend>3. Sua Situação Familiar</legend>
+                <div class="input-group">
+                    <label for="moraCom">Você mora com quem?</label>
+                    <select id="moraCom" name="moraCom" required>
+                        <option value="">Selecione...</option>
+                        <option value="sozinha"     data-score="4">Sozinha</option>
+                        <option value="companheiro" data-score="2">Com o companheiro(a)</option>
+                        <option value="familiares"  data-score="1">Com familiares</option>
+                        <option value="abrigo"      data-score="5">Em abrigo</option>
+                        <option value="outra"                     >Outra situação</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="numPessoas">Quantas pessoas moram na sua casa?</label>
+                    <select id="numPessoas" name="numPessoas" required>
+                        <option value="">Selecione...</option>
+                        <option value="1_pessoa" > 1 Pessoa</option>
+                        <option value="2_pessoa" > 2 Pessoas</option>
+                        <option value="3_pessoa" > 3 Pessoas</option>
+                        <option value="4_mais"   > 4 Ou mais Pessoas</option>
+                        <option value="outra"    >Outra situação</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="numCriancas">Quantas crianças (além do bebê) vivem com você?</label>
+                    <select id="numCriancas" name="numCriancas" required>
+                        <option value="">Selecione...</option>
+                        <option value="1_crianca" > 1 Crianca</option>
+                        <option value="2_crianca" > 2 Criancas</option>
+                        <option value="3_crianca" > 3 Criancas</option>
+                        <option value="4_mais"    > 4 Ou mais Criancas</option>
+                        <option value="outra"     >Outra situação</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step">
+                <legend>4. Sobre a Gestação ou o Bebê</legend>
+                <div class="radio-group">
+                    <p>Você está:</p>
+                    <label><input type="radio" name="statusGestacao" value="gravida" required> Grávida</label>
+                    <label><input type="radio" name="statusGestacao" value="bebe"> Já tive o bebê</label>
+                </div>
+
+                <div id="divGravida" class="hidden conditional">
+                    <div class="input-group">
+                        <label for="mesesGestacao">Quantos meses de gestação?</label>
+                        <select id="mesesGestacao" name="mesesGestacao" required>
+                            <option value="">Selecione...</option>
+                            <option value="1_3"    data-score="2"> 1 a 3 Meses</option>
+                            <option value="4_6"    data-score="3"> 4 a 6 Meses</option>
+                            <option value="7_9"    data-score="4"> 7 a 9 Meses</option>
+                            <option value="9_mais" data-score="5"> 9 ou mais Meses</option>
+                        </select>
+                    </div>
+                    <div class="radio-group">
+                        <p>Faz acompanhamento pré-natal?</p>
+                        <label><input type="radio" name="preNatal" value="sim" data-score="0"> Sim</label>
+                        <label><input type="radio" name="preNatal" value="nao" data-score="5"> Não</label>
+                    </div>
+                    <div class="input-group hidden" id="divLocalPreNatal">
+                        <label for="localPreNatal">Onde faz o acompanhamento?</label>
+                        <input type="text" id="localPreNatal" name="localPreNatal">
+                    </div>
+                </div>
+
+                <div id="divBebe" class="hidden conditional">
+                    <div class="input-group">
+                        <label for="idadeBebe">Idade do bebê (em meses)</label>
+                        <select id="idadeBebe" name="idadeBebe" required>
+                            <option value="">Selecione...</option>
+                            <option value="1_6"     data-score="5"> 1 a 6 Meses</option>
+                            <option value="7_12"    data-score="4"> 7 a 12 Meses</option>
+                            <option value="13_18"   data-score="3"> 13 a 18 Meses</option>
+                            <option value="14_24"   data-score="2"> 14 a 24 Meses</option>
+                            <option value="24_mais" data-score="1"> 24 ou mais Meses</option>
+                        </select>
+                    </div>
+                    <div class="radio-group">
+                        <p>O bebê possui registro de nascimento?</p>
+                        <select id="registroBebe" name="registroBebe" required>
+                            <option value="">Selecione...</option>
+                            <option value="sim" data-score="1">Sim</option>
+                            <option value="nao" data-score="4">Não</option>
+                        </select>
+                    </div>
+                    <div class="radio-group">
+                        <label for="vacinadoBebe">O bebê está vacinado conforme o calendário?</label>
+                        <select id="vacinadoBebe" name="vacinadoBebe" required>
+                            <option value="">Selecione...</option>
+                            <option value="sim" data-score="1">Sim</option>
+                            <option value="nao" data-score="5">Não</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step">
+                <legend>5. Sua Situação Socioeconômica</legend>
+                <div class="input-group">
+                    <label for="trabalho">Você está trabalhando atualmente?</label>
+                    <select id="trabalho" name="trabalho" required>
+                        <option value="">Selecione...</option>
+                        <option value="clt"      data-score="1">Sim, com carteira assinada</option>
+                        <option value="informal" data-score="3">Sim, trabalho informal</option>
+                        <option value="nao"      data-score="5">Não estou trabalhando</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="fonteRenda">Qual é a sua principal fonte de renda?</label>
+                    <select id="fonteRenda" name="fonteRenda" required>
+                        <option value="">Selecione...</option>
+                        <option value="proprio"    data-score="3">Trabalho próprio</option>
+                        <option value="beneficio"  data-score="4">Benefício social (Ex: Bolsa Família)</option>
+                        <option value="familiares" data-score="4">Ajuda de familiares</option>
+                        <option value="nenhuma"    data-score="5">Não tenho renda</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="rendaMensal">Renda mensal total da família</label>
+                    <select id="rendaMensal" name="rendaMensal" required>
+                        <option value="">Selecione...</option>
+                        <option value="ate_1"  data-score="5">Até 1 salário mínimo</option>
+                        <option value="1_a_2"  data-score="3">De 1 a 2 salários mínimos</option>
+                        <option value="mais_2" data-score="1">Mais de 2 salários mínimos</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step">
+                <legend>6. Suas Condições de Moradia</legend>
+                <div class="input-group">
+                    <label for="tipoMoradia">Tipo de moradia</label>
+                    <select id="tipoMoradia" name="tipoMoradia" required>
+                        <option value="">Selecione...</option>
+                        <option value="propria">Própria</option>
+                        <option value="alugada">Alugada</option>
+                        <option value="cedida">Cedida</option>
+                        <option value="ocupacao">Ocupação / Abrigo</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="materialCasa">Material predominante da casa</label>
+                    <select id="materialCasa" name="materialCasa" required>
+                        <option value="">Selecione...</option>
+                        <option value="alvenaria">Alvenaria</option>
+                        <option value="madeira">Madeira</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                <div class="checkbox-group">
+                    <p>Quais desses servićos voce NÃO tem acesso:</p>
+                    <label>
+                        <input type="checkbox" name="servicos" value="agua"    data-score="5"> Água encanada</label>
+                        <label>
+                        <input type="checkbox" name="servicos" value="energia" data-score="5"> Energia elétrica</label>
+                        <label>
+                        <input type="checkbox" name="servicos" value="esgoto"  data-score="5"> Esgoto</label>
+                        <label>
+                        <input type="checkbox" name="servicos" value="lixo"    data-score="5"> Coleta de lixo</label>
+                        </div>
+            </fieldset>
+
+            <fieldset class="form-step">
+                <legend>7. Saúde e Apoio</legend>
+                <div class="radio-group">
+                    <p>Você tem acesso a posto de saúde próximo?</p>
+                    <label>
+                        <input type="radio" name="postoSaude" value="sim"     data-score="1"> Sim</label>
+                        <label>
+                            <input type="radio" name="postoSaude" value="nao" data-score="5"> Não</label>
+                        </div>
+                <div class="radio-group">
+                    <p>Recebe acompanhamento de assistente social ou psicólogo?</p>
+                    <label>
+                        <input type="radio" name="acompanhamento" value="sim" data-score="1"> Sim
+                    </label>
+                    <label>
+                        <input type="radio" name="acompanhamento" value="nao" data-score="3"> Não
+                    </label>
+                </div>
+                <div class="radio-group">
+                    <p>Usa algum medicamento de uso contínuo?</p>
+                    <label>
+                        <input type="radio" name="medicamento" value="sim" data-score="5"> Sim
+                    </label>
+                    <label>
+                        <input type="radio" name="medicamento" value="nao" data-score="1"> Não
+                    </label>
+                </div>
+                <div class="input-group hidden" id="divQualMedicamento">
+                    <label for="qualMedicamento">Se sim, qual?</label>
+                    <input type="text" id="qualMedicamento" name="qualMedicamento">
+                </div>
+                <div class="radio-group">
+                    <p>Já participou de algum programa social para gestantes/mães?</p>
+                    <label>
+                        <input type="radio" name="programaSocial" value="sim" data-score="1"> Sim
+                    </label>
+                    <label>
+                        <input type="radio" name="programaSocial" value="nao" data-score="3"> Não
+                    </label>
+                </div>
+                <div class="input-group hidden" id="divQualPrograma">
+                    <label for="qualPrograma">Se sim, qual?</label>
+                    <input type="text" id="qualPrograma" name="qualPrograma">
+                </div>
+            </fieldset>
+
+            <fieldset class="form-step">
+                <legend>8. Apoio e Expectativas</legend>
+                <div class="checkbox-group">
+                    <p>Que tipo de ajuda voocê mais precisa no momento?</p>
+                    <label>
+                        <input type="checkbox" name="ajuda" value="alimentos"   data-score="5"> Alimentos
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ajuda" value="enxoval"     data-score="3"> Enxoval
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ajuda" value="psicologico" data-score="4"> Apoio psicológico
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ajuda" value="amamentacao" data-score="5"> Amamentação
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ajuda" value="cursos"      data-score="2"> Cursos
+                    </label>
+                    <label>
+                        <input type="checkbox" name="ajuda" value="social"      data-score="3"> Acompanhamento social
+                    </label>
+                </div>
+                <div class="radio-group">
+                    <p>Você tem alguém que te apoia?</p>
+                    <label>
+                        <input type="radio" name="apoioPessoal" value="sim" data-score="1"> Sim
+                    </label>
+                    <label>
+                        <input type="radio" name="apoioPessoal" value="nao" data-score="5"> Não
+                    </label>
+                </div>
+                <div class="input-group">
+                    <label for="mensagem">Deixe uma mensagem ou observação (opcional)</label>
+                    <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+                </div>
+            </fieldset>
+
+            <div class="form-navigation">
+                <button type="button" class="nav-btn" id="prevBtn">Anterior</button>
+                <button type="button" class="nav-btn" id="nextBtn" onclick="store_answers()">Próximo</button>
+                <button type="submit" class="submit-btn" id="submitBtn" onclick="sendFormDataToApi()">Enviar Formulário</button>
+            </div>
+        </form>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

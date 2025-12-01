@@ -7,6 +7,7 @@
     --texto-corpo: #555555;
     --borda: #FADAE2;
     --fonte-principal: 'Poppins', sans-serif;
+    --field-gap: 18px; /* vertical spacing between form groups */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -43,6 +44,17 @@ header p { font-size: 1rem; color: #757575; }
     margin-bottom: 30px;
     position: relative;
 }
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    left: 12.5px;
+    right: 12.5px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    background: linear-gradient(90deg, rgba(248,176,196,0.2), rgba(248,176,196,0.05));
+    z-index: 1;
+}
 .progress-step {
     width: 25px;
     height: 25px;
@@ -61,18 +73,18 @@ header p { font-size: 1rem; color: #757575; }
 .form-step {
     display: none;
     animation: fadeIn 0.6s;
+    border: none; /* ensure there is no visible border around steps */
+    box-shadow: none;
 }
 .form-step.active {
     display: block;
 }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-fieldset { border: none; padding: 0; }
 legend {
     font-size: 1.3rem;
     font-weight: 600;
     color: var(--texto-titulo);
-    margin-bottom: 20px;
+    margin-bottom: calc(var(--field-gap) + 2px);
     width: 100%;
     text-align: center;
     border-bottom: 1px solid var(--borda);
@@ -80,8 +92,8 @@ legend {
 }
 
 /* Campos de Input */
-.input-group, .radio-group, .checkbox-group { margin-bottom: 20px; }
-label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.95rem; }
+.input-group, .radio-group, .checkbox-group { margin-bottom: var(--field-gap); }
+label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 0.95rem; }
 input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], select, textarea {
     width: 100%;
     padding: 12px;
@@ -99,13 +111,26 @@ input:focus, select:focus, textarea:focus {
 }
 
 .radio-group p, .checkbox-group p { font-weight: 600; margin-bottom: 10px; }
-.radio-group label, .checkbox-group label { display: flex; align-items: center; margin-bottom: 8px; font-weight: 400; cursor: pointer; }
+.radio-group label, .checkbox-group label { display: flex; align-items: center; margin-bottom: 10px; font-weight: 400; cursor: pointer; }
 .radio-group input, .checkbox-group input { margin-right: 10px; }
 
 /* Lógica Condicional e Navegação */
 .hidden { display: none; }
-.conditional { border-left: 3px solid var(--rosa-principal); padding-left: 15px; margin-top: 15px; animation: fadeIn 0.5s; }
-.form-navigation { display: flex; justify-content: space-between; margin-top: 30px; }
+.conditional { border-left: 3px solid var(--rosa-principal); padding-left: 15px; margin-top: calc(var(--field-gap) / 2); animation: fadeIn 0.5s; }
+.form-navigation { display: flex; justify-content: space-between; margin-top: var(--field-gap); }
+
+/* Grid helpers to keep related inputs on the same row on larger screens */
+.row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--field-gap);
+    margin-bottom: var(--field-gap);
+}
+.row .input-group { margin-bottom: 0; }
+
+@media (min-width: 720px) {
+    .row { grid-template-columns: 1fr 1fr; }
+}
 
 .nav-btn, .submit-btn {
     padding: 12px 25px;
@@ -116,8 +141,68 @@ input:focus, select:focus, textarea:focus {
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
-.nav-btn { background-color: #f0f0f0; color: var(--texto-corpo); }
+.nav-btn { background-color: #fafafa; color: var(--texto-corpo); box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
 .nav-btn#prevBtn { background-color: transparent; color: var(--texto-corpo); }
-.submit-btn, .nav-btn#nextBtn { background-color: var(--rosa-principal); color: var(--rosa-fundo); }
+.submit-btn, .nav-btn#nextBtn { background-color: var(--texto-titulo); color: #fff; box-shadow: 0 6px 18px rgba(217,74,128,0.12); }
 .submit-btn:hover, .nav-btn#nextBtn:hover { background-color: var(--rosa-hover); transform: translateY(-2px); }
 .submit-btn { display: none; } /* Escondido por padrão */
+
+#listaContainer {
+    border: 1px solid var(--borda);
+    border-radius: 6px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+#novoItem {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-family: var(--fonte-principal);
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+#listaItens {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#listaItens li {
+    background-color: var(--rosa-fundo);
+    border: 1px solid var(--borda);
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#listaItens li button {
+    background: none;
+    border: none;
+    color: var(--texto-titulo);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.notice-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(90deg, rgba(248,176,196,0.06), rgba(248,176,196,0.02));
+    border: 1px solid var(--borda);
+    padding: 10px;
+    border-radius: 6px;
+    margin: 10px 0 12px 0;
+}
+
+/* image preview removed from UI */
+
+/* Make navigation buttons stack on small screens for better usability */
+@media (max-width: 520px) {
+    .form-navigation { flex-direction: column-reverse; gap: 10px; }
+    .nav-btn, .submit-btn { width: 100%; display: block; }
+}

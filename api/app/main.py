@@ -1,5 +1,5 @@
 import os
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, HTTPException
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import OperationalError
 from sqlalchemy.orm import sessionmaker
@@ -36,10 +36,10 @@ def read_root():
     if not motherList:
         return {"Mother List": "No mothers found."}
 
-    resposeList = [
+    responseList = [
         {"name": mother.name, "statusGestacao": mother.statusGestacao, "urgencyLevel": mother.urgencyLevel} for mother in motherList
     ]
-    return {"Mother List": resposeList}
+    return {"Mother List": motherList}
 
 @app.get("/db-status")
 def get_db_status():

@@ -12,20 +12,6 @@ engine = create_engine(DATABASE_URL)
 # Definição da Base
 Base = declarative_base()
 
-# Definição do Modelo do SQLAlchemy
-class MotherModel(Base):
-    __tablename__ = "mothers"
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, index=True)
-    statusGestacao = Column(String)
-    urgencyLevel = Column(Integer, default=0)
-
-# Criação das tabelas
-Base.metadata.create_all(bind=engine)
-
-# Configuração da Session
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
 # Função de Dependência
 def get_db():
     db = SessionLocal()
@@ -33,3 +19,70 @@ def get_db():
         yield db
     finally:
         db.close()
+
+# Definição do Modelo do SQLAlchemy
+class MotherModel(Base):
+    """
+    Modelo SQLAlchemy para a tabela 'mothers'.
+    """
+    __tablename__ = "mothers"
+    
+    # Colunas existentes
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True) # NomeCompleto
+    statusGestacao = Column(String)
+    urgencyLevel = Column(Integer, default=0) # Mantido
+
+    # Novas colunas (todas como String para flexibilidade, exceto urgênciaScore)
+    dataEnvio = Column(String)
+    dataNascimento = Column(String)
+    idade = Column(String)
+    cpf = Column(String)
+    rg = Column(String)
+    estadoCivil = Column(String)
+
+    telefone = Column(String)
+    email = Column(String)
+    cep = Column(String)
+    estado = Column(String)
+    endereco = Column(String)
+    numero = Column(String)
+    complemento = Column(String)
+    bairro = Column(String)
+    cidade = Column(String)
+
+    moraCom = Column(String)
+    numPessoas = Column(String)
+    numCriancas = Column(String)
+
+    mesesGestacao = Column(String)
+    preNatal = Column(String)
+    localPreNatal = Column(String)
+    dataParto = Column(String)
+    medicamento = Column(String)
+    qualMedicamento = Column(String)
+    postoSaude = Column(String)
+    acompanhamento = Column(String)
+    programaSocial = Column(String)
+
+    trabalho = Column(String)
+    fonteRenda = Column(String)
+    rendaMensal = Column(String)
+    tipoMoradia = Column(String)
+    materialCasa = Column(String)
+    servicos = Column(String) # Armazenará o JSON stringificado da lista
+
+    ajuda = Column(String) # Armazenará o JSON stringificado da lista
+    apoioPessoal = Column(String)
+    instagramHandle = Column(String)
+    instagramPublicCheck = Column(String)
+    historia = Column(String)
+    novoItem = Column(String)
+
+    urgencyScore = Column(Integer)
+
+# Criação das tabelas
+Base.metadata.create_all(bind=engine)
+
+# Configuração da Session
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)

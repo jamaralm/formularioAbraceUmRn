@@ -1,3 +1,7 @@
 FROM nginx:alpine
 
+ARG CACHE_BUST=default
+
+RUN echo "Cache bust key: ${CACHE_BUST}"
+
 COPY ./web /usr/share/nginx/html
